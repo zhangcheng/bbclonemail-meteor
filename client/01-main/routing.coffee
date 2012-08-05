@@ -11,22 +11,22 @@
 # Routing
 # -------
 BBCloneMail.module "Routing", (Routing, BBCloneMail, Backbone, Marionette, $, _) ->
-  
+
   # Public API
   # ----------
-  
-  # The `showRoute` method is a private method used to update the 
-  # url's hash fragment route. It accepts a base route and an 
-  # unlimited number of optional parameters for the route: 
+
+  # The `showRoute` method is a private method used to update the
+  # url's hash fragment route. It accepts a base route and an
+  # unlimited number of optional parameters for the route:
   # `showRoute("foo", "bar", "baz", "etc");`.
   Routing.showRoute = ->
-    route = getRoutePath(arguments_)
+    route = getRoutePath(arguments)
     Backbone.history.navigate route, false
 
-  
+
   # Helper Methods
   # --------------
-  
+
   # Creates a proper route based on the `routeParts`
   # that are passed to it.
   getRoutePath = (routeParts) ->

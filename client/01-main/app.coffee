@@ -16,10 +16,19 @@ Backbone.Marionette.TemplateCache.prototype.loadTemplate = (tmplName) ->
     Template[tmplName]()
 
 
+Backbone.Marionette.Renderer.render = (template, data) ->
+  console.log "Backbone.Marionette.Renderer.render", template, data
+  tmpl = Meteor.ui.chunk ->
+    Template[template] data
+  return tmpl
+
+
 Meteor.startup ->
   console.log "client startup"
-  callback = ->
-    console.log Category.find().count()
-    BBCloneMail.start() if Category.find().count()
-    Meteor.clearInterval id
+  callback = () ->
+    console.log Category.find().count(), id
+    if Category.find().count()
+      Meteor.clearInterval id
+      BBCloneMail.start()
   id = Meteor.setInterval callback, 3000
+  console.log "id: ", id

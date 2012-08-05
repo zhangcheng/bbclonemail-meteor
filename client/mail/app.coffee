@@ -17,8 +17,31 @@
 # when it's in mail mode.
 BBCloneMail.module "MailApp", (MailApp, BBCloneMail, Backbone, Marionette, $, _) ->
 
+  MailApp.Email = Backbone.Model.extend
+    meteorStorage: new Backbone.MeteorStorage(Email)
+
+  MailApp.EmailCollection = BBCloneMail.Collection.extend
+    meteorStorage: new Backbone.MeteorStorage(Email)
+    model: MailApp.Email
+
+    # Get email for the specified category. Returns a
+    # new `EmailCollection` with the filtered contents.
+    # If no category is specified, returns `this`.
+    forCategory: (category) ->
+      return this  unless category
+      filteredMailItems = @filter((email) ->
+        categories = email.get("categories")
+        found = categories.indexOf(category) >= 0
+        found
+      )
+      x = new MailApp.EmailCollection(filteredMailItems)
+      x
+
   showFilteredEmailList = (category) ->
     console.log "showFilteredEmailList: ", category
+    MailApp.emailList.onReset (list) ->
+      filteredMail = list.forCategory(category)
+      MailApp.MailBox.showMail filteredMail
 
   # Mail App Public API
   # -------------------
@@ -26,7 +49,7 @@ BBCloneMail.module "MailApp", (MailApp, BBCloneMail, Backbone, Marionette, $, _)
   # Show the inbox with all email.
   MailApp.showInbox = ->
     MailApp.showCategory()
-#    BBCloneMail.vent.trigger "mail:show"
+    BBCloneMail.vent.trigger "mail:show"
 
 
   # Show a list of email for the given category.
@@ -66,6 +89,8 @@ BBCloneMail.module "MailApp", (MailApp, BBCloneMail, Backbone, Marionette, $, _)
   # of emails that are passed in from the call to
   # `BBCloneMail.start`.
   BBCloneMail.addInitializer ->
-    MailApp.emailList = Email.find().fetch()
+#    MailApp.emailList = Email.find().fetch()
+    MailApp.emailList = new MailApp.EmailCollection()
+    MailApp.emailList.fetch()
 
 

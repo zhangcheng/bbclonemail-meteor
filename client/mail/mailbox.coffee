@@ -22,14 +22,14 @@ BBCloneMail.module "MailApp.MailBox", (MailBox, BBCloneMail, Backbone, Marionett
   EmailView = Marionette.ItemView.extend(
     tagName: "ul"
     className: "email-list email-view"
-    template: "#email-view-template"
+    template: "email-view"
   )
 
   # Show a preview of the email in the list. Clicking
   # on it will show the full contents of the email.
   EmailPreview = Marionette.ItemView.extend(
     tagName: "li"
-    template: "#email-preview-template"
+    template: "email-preview"
     events:
       click: "showEmail"
 
