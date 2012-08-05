@@ -2,7 +2,7 @@ BBCloneMail-on-Meteor: Derick Bailey's BBCloneMail modified to run on Meteor
 
 ## Keys
 
-* Implement a Backbone storage plugin to wire in Meteor's collection
+* Implement a Backbone storage plugin to wire in [Meteor](http://www.meteor.com)'s collection
 
 ## TODOs
 
@@ -12,7 +12,7 @@ BBCloneMail-on-Meteor: Derick Bailey's BBCloneMail modified to run on Meteor
 
 ## Credits
 
-* Derick Bailey's Backbone.Marionette and BBCloneMail of 'coz
+* [Derick Bailey](http://derickbailey.lostechies.com/)'s [Backbone.Marionette](https://github.com/derickbailey/backbone.marionette) and [BBCloneMail](https://github.com/derickbailey/bbclonemail) of 'coz
 
 * [A localStorage adapter for Backbone.js](https://github.com/jeromegn/Backbone.localStorage)
 
