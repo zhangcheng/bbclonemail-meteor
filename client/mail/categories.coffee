@@ -22,8 +22,8 @@ BBCloneMail.module "MailApp.Categories", (Categories, BBCloneMail, Backbone, Mar
   # The view to show the list of categories. The view
   # template includes the standard categories hard coded
   # and then it renders the individual categories, too.
-  Categories.CategoriesView = Marionette.ItemView.extend(
-    template: "#mail-categories-view-template"
+  Categories.CategoriesView = MyItemView.extend(
+    template: "mail-categories-view"
     events:
       "click a": "categoryClicked"
 

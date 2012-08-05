@@ -1,0 +1,21 @@
+<template name="mail-categories-view">
+  <p>Mail Categories</p>
+  <ul>
+    <li>
+      <a href="#inbox" data-category="">Inbox</a>
+    </li>
+    <li>
+      <a href="#inbox/sent" data-category="sent">Sent</a>
+    </li>
+    <li>
+      <a href="#inbox/trash" data-category="trash">Trash</a>
+    </li>
+  </ul>
+  <ul class='customCategories'>
+    {{#each collection}}
+      <li>
+        <a href="#inbox/categories/{{name}}" data-category="{{name}}">{{name}}</a>
+      </li>
+    {{/each}}
+  </ul>
+</template>

@@ -26,7 +26,7 @@ BBCloneMail.module "MailApp", (MailApp, BBCloneMail, Backbone, Marionette, $, _)
   # Show the inbox with all email.
   MailApp.showInbox = ->
     MailApp.showCategory()
-    BBCloneMail.vent.trigger "mail:show"
+#    BBCloneMail.vent.trigger "mail:show"
 
 
   # Show a list of email for the given category.
