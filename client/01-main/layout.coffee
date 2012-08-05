@@ -66,7 +66,8 @@ BBCloneMail.module "Layout", (Layout, BBCloneMail, Backbone, Marionette, $, _) -
     # Render the layout and get it on the screen, first
     BBCloneMail.layout = new Layout()
     BBCloneMail.layout.on "show", ->
-      BBCloneMail.vent.trigger "layout:rendered"
+      Meteor.defer ->
+        BBCloneMail.vent.trigger "layout:rendered"
 
     BBCloneMail.content.show BBCloneMail.layout
 

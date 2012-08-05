@@ -16,13 +16,6 @@
 # the HTML template.
 BBCloneMail.module "MailApp.Categories", (Categories, BBCloneMail, Backbone, Marionette, $, _) ->
 
-  # The category model and collection
-  Category = Backbone.Model.extend({})
-  CategoryCollection = Backbone.Collection.extend(
-    url: "/categories"
-    model: Category
-  )
-
   # Mail Category Views
   # -------------------
 

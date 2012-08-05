@@ -17,6 +17,9 @@
 # when it's in mail mode.
 BBCloneMail.module "MailApp", (MailApp, BBCloneMail, Backbone, Marionette, $, _) ->
 
+  showFilteredEmailList = (category) ->
+    console.log "showFilteredEmailList: ", category
+
   # Mail App Public API
   # -------------------
 
