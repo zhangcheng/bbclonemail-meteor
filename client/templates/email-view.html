@@ -1,0 +1,29 @@
+<template name="email-view">
+  <li>
+    <header>
+      <span class='from'>
+        {{ from }}
+      </span>
+      <span class='subject'>
+        {{ subject }}
+      </span>
+      <span class='date'>
+        {{ date }}
+      </span>
+    </header>
+    <article>
+      <div class='body'>
+
+        {{#if categories}}
+          <ul class='emailCategories'>
+            {{#each categories}}
+            <li>{{ this }}</li>
+            {{/each}}
+          </ul>
+        {{/if}}
+
+        <p>{{ body }}</p>
+      </div>
+    </article>
+  </li>
+</template>
