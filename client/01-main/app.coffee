@@ -10,7 +10,7 @@ BBCloneMail.vent.on "layout:rendered", ->
 
 
 Backbone.Marionette.Renderer.render = (template, data) ->
-  Meteor.ui.chunk ->
+  Meteor.ui.render ->
     Template[template] data
 
 
