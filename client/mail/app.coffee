@@ -38,7 +38,6 @@ BBCloneMail.module "MailApp", (MailApp, BBCloneMail, Backbone, Marionette, $, _)
       x
 
   showFilteredEmailList = (category) ->
-    console.log "showFilteredEmailList: ", category
     MailApp.emailList.onReset (list) ->
       filteredMail = list.forCategory(category)
       MailApp.MailBox.showMail filteredMail
