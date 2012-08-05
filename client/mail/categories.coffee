@@ -29,11 +29,11 @@ BBCloneMail.module "MailApp.Categories", (Categories, BBCloneMail, Backbone, Mar
   # The view to show the list of categories. The view
   # template includes the standard categories hard coded
   # and then it renders the individual categories, too.
-  Categories.CategoriesView = Marionette.ItemView.extend(
+  Categories.CategoriesView = Marionette.ItemView.extend
     template: "mail-categories-view"
+
     events:
       "click a": "categoryClicked"
-
 
     # Raise an event aggregator event, to say that a
     # particular category was clicked, and let the other
@@ -45,7 +45,6 @@ BBCloneMail.module "MailApp.Categories", (Categories, BBCloneMail, Backbone, Mar
         BBCloneMail.vent.trigger "mail:category:show", category
       else
         BBCloneMail.vent.trigger "mail:show"
-  )
 
   # Mail Categories Public API
   # --------------------------
@@ -65,5 +64,3 @@ BBCloneMail.module "MailApp.Categories", (Categories, BBCloneMail, Backbone, Mar
   BBCloneMail.addInitializer ->
     Categories.categoryCollection = new Categories.CategoryCollection()
     Categories.categoryCollection.fetch()
-
-

@@ -61,12 +61,7 @@ _.extend(Backbone.MeteorStorage.prototype, {
 
   // Return the array of all models currently in storage.
   findAll: function() {
-    console.log("Backbone.MeteorStorage.findAll");
     return this.collection.find().fetch()
-    // return _(this.records).chain()
-    //     .map(function(id){return JSON.parse(this.localStorage().getItem(this.name+"-"+id));}, this)
-    //     .compact()
-    //     .value();
   },
 
   // Delete a model from `this.data`, returning it.

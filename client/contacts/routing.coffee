@@ -13,34 +13,32 @@
 
 # Handle all of the routing needs related to contacts
 BBCloneMail.module "Routing.ContactsRouting", (ContactsRouting, BBCloneMail, Backbone, Marionette, $, _) ->
-  
+
   # Router
   # ------
-  
+
   # The contacts router handles the incoming routes from the browser url, from
   # bookmarks, direct links and users typing directly in to the url.
   #
   # The router callbacks are only fired when the url hash is
   # directly hit, either by bookmark or manually changing
-  # the hash. 
+  # the hash.
   #
   # Also note that the router is as dumb as possible. It only
   # calls out to other sub-app controlling objects, and lets
   # those objects do the real work.
-  ContactsRouting.Router = Backbone.Marionette.AppRouter.extend(appRoutes:
-    contacts: "showContactList"
-  )
-  
+  ContactsRouting.Router = Backbone.Marionette.AppRouter.extend
+    appRoutes:
+      contacts: "showContactList"
+
   # Show route for the contacts app
   BBCloneMail.vent.bind "contacts:show", ->
     BBCloneMail.Routing.showRoute "contacts"
 
-  
+
   # Initialization
   # --------------
-  
+
   # Initialize the router when the application starts
   BBCloneMail.addInitializer ->
     ContactsRouting.router = new ContactsRouting.Router(controller: BBCloneMail.ContactsApp)
-
-

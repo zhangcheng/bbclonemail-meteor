@@ -1,7 +1,7 @@
 BBCloneMail.module "Layout", (Layout, BBCloneMail, Backbone, Marionette, $, _) ->
 
   # The application layout
-  Layout = Backbone.Marionette.Layout.extend(
+  Layout = Backbone.Marionette.Layout.extend
     template: "layout"
 
     # These are my visual regions: the "navigation" or
@@ -43,26 +43,24 @@ BBCloneMail.module "Layout", (Layout, BBCloneMail, Backbone, Marionette, $, _) -
       @$("select").val app
 
     setupAppSelectionEvents: ->
-      that = this
+      self = @
 
       # When the mail app is shown, be sure we are displaying "Mail"
       # in the app selector.
       BBCloneMail.vent.bind "mail:show", ->
-        that.setSelection "mail"
+        self.setSelection "mail"
 
 
       # When the contacts app is shown, be sure we are displaying
       # "Contacts" in the app selector.
       BBCloneMail.vent.bind "contacts:show", ->
-        that.setSelection "contacts"
+        self.setSelection "contacts"
 
-  )
 
   # Initialize the application layout and when the layout has
   # been rendered and displayed, then start the rest of the
   # application
   BBCloneMail.addInitializer ->
-
     # Render the layout and get it on the screen, first
     BBCloneMail.layout = new Layout()
     BBCloneMail.layout.on "show", ->
@@ -72,4 +70,3 @@ BBCloneMail.module "Layout", (Layout, BBCloneMail, Backbone, Marionette, $, _) -
     BBCloneMail.content.show BBCloneMail.layout
 
   Layout
-

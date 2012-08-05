@@ -14,16 +14,15 @@
 # Provide a guaranteed execution of a "reset" event for
 # collections so I can find an item in the collection after
 # the collection has been loaded.
-BBCloneMail.Collection = Backbone.Collection.extend(
+BBCloneMail.Collection = Backbone.Collection.extend
   constructor: ->
     args = Array::slice.call(arguments)
-    Backbone.Collection::constructor.apply this, args
+    Backbone.Collection::constructor.apply @, args
     @onResetCallbacks = new Backbone.Marionette.Callbacks()
-    @on "reset", @runOnResetCallbacks, this
+    @on "reset", @runOnResetCallbacks, @
 
   onReset: (callback) ->
     @onResetCallbacks.add callback
 
   runOnResetCallbacks: ->
-    @onResetCallbacks.run this, this
-)
+    @onResetCallbacks.run @, @

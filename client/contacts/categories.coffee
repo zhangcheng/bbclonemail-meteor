@@ -20,14 +20,13 @@ BBCloneMail.module "ContactsApp.Categories", (Categories, BBCloneMail, Backbone,
 
   # Displays the hard coded list of contact categories, from
   # the view template.
-  Categories.ContactCategoriesView = Marionette.ItemView.extend(
+  Categories.ContactCategoriesView = Marionette.ItemView.extend
     template: "contact-categories-view"
     events:
       "click a": "categoryClicked"
 
     categoryClicked: (e) ->
       e.preventDefault()
-  )
 
   # Public API
   # ----------
