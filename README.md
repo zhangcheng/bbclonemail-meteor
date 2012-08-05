@@ -1,5 +1,9 @@
 BBCloneMail-on-Meteor: Derick Bailey's BBCloneMail modified to run on Meteor
 
+## Keys
+
+* Implement a Backbone storage plugin to wire in Meteor's collection
+
 ## TODOs
 
 * finish implementation of backbone.meteorStorage.js (only findAll() for now)
