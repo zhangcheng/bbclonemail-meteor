@@ -4,6 +4,16 @@ BBCloneMail-on-Meteor: Derick Bailey's BBCloneMail modified to run on Meteor
 
 * Implement a Backbone storage plugin to wire in [Meteor](http://www.meteor.com)'s collection
 
+## See It In Action
+
+My demo instance runs at
+
+http://bbclonemail.meteor.com
+
+Derick's demo instance runs at
+
+http://bbclonemail.heroku.com
+
 ## TODOs
 
 * finish implementation of backbone.meteorStorage.js (only findAll() for now)
