@@ -6,6 +6,12 @@ BBCloneMail-on-Meteor: Derick Bailey's BBCloneMail modified to run on Meteor
 
 * extract backbone.meteorStorage.js out as seperate Backbone storage plugin
 
+## Credits
+
+* Derick Bailey's Backbone.Marionette and BBCloneMail of 'coz
+
+* [A localStorage adapter for Backbone.js](https://github.com/jeromegn/Backbone.localStorage)
+
 ## Legal Mumbo Jumbo (MIT License)
 
 Copyright (c) 2012 ZHANG Cheng
