@@ -1,13 +1,19 @@
-<template name="email-preview">
-  <header>
-    <span class='from'>
-      {{ from }}
-    </span>
-    <span class='subject'>
-      {{ subject }}
-    </span>
-    <span class='date'>
-      {{ date }}
-    </span>
-  </header>
+<template name="email_preview">
+  <ul class="email-list">
+    {{#each items}}
+    <li class="email-header">
+      <header>
+        <span class='from'>
+          {{ from }}
+        </span>
+        <span class='subject'>
+          {{ subject }}
+        </span>
+        <span class='date'>
+          {{ date }}
+        </span>
+      </header>
+    </li>
+    {{/each}}
+  </ul>
 </template>

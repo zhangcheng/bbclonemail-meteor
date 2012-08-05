@@ -24,23 +24,20 @@ BBCloneMail.module "MailApp.MailBox", (MailBox, BBCloneMail, Backbone, Marionett
     className: "email-list email-view"
     template: "email-view"
 
+    serializeData: ->
+      return @model if @model
+
   # Show a preview of the email in the list. Clicking
   # on it will show the full contents of the email.
-  EmailPreview = Marionette.ItemView.extend
-    tagName: "li"
-    template: "email-preview"
-    events:
-      click: "showEmail"
+  EmailListView = Marionette.ItemView.extend
+    template: "email_preview"
 
-    showEmail: (e) ->
-      BBCloneMail.vent.trigger "mail:message:show", @model
+    serializeData: ->
+      return {items: Email.find()}
 
-  # The actual mail box view, which renders each
-  # of the individual email items.
-  EmailListView = Marionette.CollectionView.extend
-    tagName: "ul"
-    className: "email-list"
-    itemView: EmailPreview
+  Template.email_preview.events =
+    'click .email-header': ->
+      BBCloneMail.vent.trigger "mail:message:show", @
 
   # Mail Box Public API
   # -------------------
@@ -53,7 +50,7 @@ BBCloneMail.module "MailApp.MailBox", (MailBox, BBCloneMail, Backbone, Marionett
 
   # A method to display a list of supplied email messages.
   MailBox.showMail = (emailList) ->
-    emailListView = new EmailListView(collection: emailList)
+    emailListView = new EmailListView()
     BBCloneMail.layout.main.show emailListView
 
 
