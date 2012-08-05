@@ -89,7 +89,6 @@ BBCloneMail.module "MailApp", (MailApp, BBCloneMail, Backbone, Marionette, $, _)
   # of emails that are passed in from the call to
   # `BBCloneMail.start`.
   BBCloneMail.addInitializer ->
-#    MailApp.emailList = Email.find().fetch()
     MailApp.emailList = new MailApp.EmailCollection()
     MailApp.emailList.fetch()
 

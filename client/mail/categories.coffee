@@ -16,13 +16,20 @@
 # the HTML template.
 BBCloneMail.module "MailApp.Categories", (Categories, BBCloneMail, Backbone, Marionette, $, _) ->
 
+  Categories.Category = Backbone.Model.extend
+    meteorStorage: new Backbone.MeteorStorage(Category)
+
+  Categories.CategoryCollection = BBCloneMail.Collection.extend
+    meteorStorage: new Backbone.MeteorStorage(Category)
+    model: Categories.Category
+
   # Mail Category Views
   # -------------------
 
   # The view to show the list of categories. The view
   # template includes the standard categories hard coded
   # and then it renders the individual categories, too.
-  Categories.CategoriesView = MyItemView.extend(
+  Categories.CategoriesView = Marionette.ItemView.extend(
     template: "mail-categories-view"
     events:
       "click a": "categoryClicked"
@@ -56,6 +63,7 @@ BBCloneMail.module "MailApp.Categories", (Categories, BBCloneMail, Backbone, Mar
   # then in memory, so we can render them on to the
   # screen when we need to.
   BBCloneMail.addInitializer ->
-    Categories.categoryCollection = Category.find().fetch()
+    Categories.categoryCollection = new Categories.CategoryCollection()
+    Categories.categoryCollection.fetch()
 
 
